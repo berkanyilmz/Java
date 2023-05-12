@@ -1,0 +1,17 @@
+public static void main(String[] args) {
+/*
+* this
+*is
+* comment
+* line
+*/	int x = 4;
+// comment line
+int abc = 5;
+if (x > abc) {
+    x = x + abc;
+}
+else {
+    x = abc - x;
+}
+}
+}
