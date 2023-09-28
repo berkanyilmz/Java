@@ -24,7 +24,7 @@ public class PlayerUI extends JFrame{
     
     public PlayerUI() {
         super("MP3 Player");
-        path = "C:\\FFOutput\\";
+        path = "Your path of files of music";
         status = "not play";
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +48,7 @@ public class PlayerUI extends JFrame{
         musicNameLabel = new JLabel("Playing sound : ");
         playingMusic.add(musicNameLabel);
 
-        musicFiles = FileHelper.getFile("C:\\FFOutput\\").list();
+        musicFiles = FileHelper.getFile(path).list();
         areaOfMusics.setLayout(new GridLayout(musicFiles.length, 1));
         musicButtons = new JButton[musicFiles.length];
         for (int i = 0; i < musicFiles.length; i++) {
