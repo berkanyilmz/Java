@@ -25,7 +25,7 @@ public class PlayerUI extends JFrame{
 
     public PlayerUI() {
         super("MP3 Player");
-        path = "C:\\FFOutput\\";
+        path = "Your path of files of music";
         musicFiles = FileHelper.getFile(path).list();
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
