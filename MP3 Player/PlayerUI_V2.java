@@ -10,7 +10,7 @@ import javax.sound.sampled.Clip;
 import javax.swing.*;
 
 public class PlayerUI extends JFrame{
-    
+
     private JFrame frame;
     private JPanel areaOfMusics, playingMusic;
     private JButton[] musicButtons;
@@ -25,7 +25,7 @@ public class PlayerUI extends JFrame{
 
     public PlayerUI() {
         super("MP3 Player");
-        path = "Your path of files of music";
+        path = "C:\\FFOutput";
         musicFiles = FileHelper.getFile(path).list();
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,11 +34,11 @@ public class PlayerUI extends JFrame{
         this.setResizable(false);
         this.setVisible(true);
     }
-    
+
     public void initComponents() {
         areaOfMusics = new JPanel();
         playingMusic = new JPanel();
-        
+
         playingMusic.setLayout(new GridLayout(1, 2));
 
         //playingMusic.setBackground(Color.BLUE);
@@ -105,6 +105,10 @@ public class PlayerUI extends JFrame{
             clip.stop();
             clip.close();
             clip = null;
+            musicNameLabel.setText("Playing Sound : ");
+            if (pauseButton.getText().equals("PLAY")) {
+                pauseButton.setText("PAUSE");
+            }
         }
     }
 
@@ -113,12 +117,12 @@ public class PlayerUI extends JFrame{
             if (clip != null) {
                 clip.stop();
                 clip.close();
-                audioInputStream = AudioSystem.getAudioInputStream(new File(path + musicName));
+                audioInputStream = AudioSystem.getAudioInputStream(new File(path + "\\" + musicName));
                 clip = AudioSystem.getClip();
                 clip.open(audioInputStream);
                 clip.start();
             } else {
-                audioInputStream = AudioSystem.getAudioInputStream(new File(path + musicName));
+                audioInputStream = AudioSystem.getAudioInputStream(new File(path + "\\" + musicName));
                 clip = AudioSystem.getClip();
                 clip.open(audioInputStream);
                 clip.start();
@@ -128,9 +132,9 @@ public class PlayerUI extends JFrame{
             System.out.println("Error Message : " + e.getMessage());
         }
     }
-    
+
     public static void main(String[] args) {
         PlayerUI player = new PlayerUI();
     }
-    
+
 }
